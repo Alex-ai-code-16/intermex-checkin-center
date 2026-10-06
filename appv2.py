@@ -45,7 +45,7 @@ background: linear-gradient(
 # ==================================================
 
 conn = sqlite3.connect(
-    "database/travel_operations.db",
+    "travel_operations.db",
     check_same_thread=False
 )
 
