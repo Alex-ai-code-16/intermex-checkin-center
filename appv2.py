@@ -395,49 +395,48 @@ with col1:
                 margin-bottom:10px;
             ">
 
-            <div style="
-                display:flex;
-                justify-content:space-between;
-                align-items:center;
-                margin-bottom:12px;
-            ">
-
-            <span style="
-                font-size:18px;
-                font-weight:700;
-                color:#217346;
-            ">
-                    👤 {t[1]}
-                </span>
-
-                <span style="
-                    font-size:18px;
+                <div style="
+                    display:flex;
+                    justify-content:space-between;
+                    align-items:center;
+                    margin-bottom:12px;
                 ">
-                    🗑️ ✏️
-                </span>
 
-            </div>
+                    <span style="
+                        font-size:18px;
+                        font-weight:700;
+                        color:#217346;
+                    ">
+                        👤 {t[1]}
+                    </span>
 
-            <div style="
-                line-height:1.9;
-                font-size:16px;
-            ">
-                ✈️ {t[2]}<br>
-                🎫 {t[3]}<br>
-                📅 {t[4]}<br>
-                🛫 {t[5]}
-            </div>
+                    <span style="
+                        font-size:18px;
+                    ">
+                        🗑️ ✏️
+                    </span>
+
+                </div>
+
+                <div style="
+                    line-height:1.9;
+                    font-size:16px;
+                ">
+                    ✈️ {t[2]}<br>
+                    🎫 {t[3]}<br>
+                    📅 {t[4]}<br>
+                    🛫 {t[5]}
+                </div>
 
             </div>
             """,
             unsafe_allow_html=True
         )
 
-     if st.button(
-         "🗑️ Eliminar",
-        key=f"delete_emitido_{t[0]}"
-    ):
-
+        if st.button(
+            "🗑️ Eliminar",
+            key=f"delete_emitido_{t[0]}"
+        ):
             cursor.execute(
                 """
                 DELETE FROM checkins
@@ -447,15 +446,13 @@ with col1:
             )
 
             conn.commit()
-
             st.rerun()
 
         if st.button(
             "✏️ Editar",
             key=f"editar_disp_{t[0]}"
         ):
-            st.session_state["ticket_editar"] = t[0]
-            
+            st.session_state["ticket_editar"] = t[0]            
 # ==================================================
 # DISPONIBLE
 # ==================================================
