@@ -395,38 +395,38 @@ with col1:
                 margin-bottom:10px;
             ">
 
-                <div style="
-                    display:flex;
-                    justify-content:space-between;
-                    align-items:center;
-                    margin-bottom:12px;
-                ">
+             <div style="
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+                margin-bottom:12px;
+            ">
 
-                    <span style="
-                        font-size:18px;
-                        font-weight:700;
-                        color:#217346;
-                    ">
-                        👤 {t[1]}
+            <span style="
+                font-size:18px;
+                font-weight:700;
+                color:#217346;
+            ">
+                   👤 {t[1]}
                     </span>
 
-                    <span style="
-                        font-size:18px;
-                    ">
+            <span style="
+                font-size:18px;
+            ">
                         🗑️ ✏️
-                    </span>
+            </span>
 
-                </div>
+            </div>
 
-                <div style="
-                    line-height:1.9;
-                    font-size:16px;
-                ">
-                    ✈️ {t[2]}<br>
-                    🎫 {t[3]}<br>
-                    📅 {t[4]}<br>
-                    🛫 {t[5]}
-                </div>
+            <div style="
+                line-height:1.9;
+                font-size:16px;
+            ">
+                ✈️ {t[2]}<br>
+                🎫 {t[3]}<br>
+                📅 {t[4]}<br>
+                🛫 {t[5]}
+            </div>
 
             </div>
             """,
