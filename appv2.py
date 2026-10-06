@@ -384,19 +384,54 @@ with col1:
 
     for t in emitidos:
 
-        st.success(
-            f"""
-👤 {t[1]}
+st.markdown(
+    f"""
+    <div style="
+        background:#EAF4EF;
+        padding:15px;
+        border-radius:12px;
+        border-left:5px solid #4CAF50;
+        box-shadow:0 2px 6px rgba(0,0,0,0.08);
+        margin-bottom:10px;
+    ">
 
-✈️ {t[2]}
+        <div style="
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:12px;
+        ">
 
-🎫 {t[3]}
+            <span style="
+                font-size:18px;
+                font-weight:700;
+                color:#217346;
+            ">
+                👤 {t[1]}
+            </span>
 
-📅 {t[4]}
+            <span style="
+                font-size:18px;
+            ">
+                🗑️ ✏️
+            </span>
 
-🛫 {t[5]}
-"""
-        )
+        </div>
+
+        <div style="
+            line-height:1.9;
+            font-size:16px;
+        ">
+            ✈️ {t[2]}<br>
+            🎫 {t[3]}<br>
+            📅 {t[4]}<br>
+            🛫 {t[5]}
+        </div>
+
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
         if st.button(
             "🗑️ Eliminar",
