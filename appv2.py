@@ -112,7 +112,7 @@ with st.sidebar:
         "Comentarios"
     )
 
-    if st.button("Guardar Ticket"):
+    if st.button("📁 Guardar Ticket"):
 
         cursor.execute(
             """
