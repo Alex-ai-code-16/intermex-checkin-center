@@ -35,6 +35,7 @@ div[data-testid="stButton"] > button {
     background: transparent;
     padding: 0px;
     min-height: auto;
+    font-size: 12px !important;
 }
 
 div[data-testid="stButton"] > button:hover {
@@ -401,7 +402,8 @@ with col1:
 
             with cab1:
                 st.markdown(
-                    f"**👤 {t[1]}**"
+                    f"<span style='font-size:16px; font-weight:600;'>👤 {t[1]}</span>",
+                    unsafe_allow_html=True
                 )
 
             with cab2:
@@ -434,14 +436,14 @@ with col1:
 
             st.markdown(
                 f"""
-✈️ {t[2]}
-
-🎫 {t[3]}
-
-📅 {t[4]}
-
-🛫 {t[5]}
-"""
+                <div style='font-size:14px; line-height:1.5'>
+                    ✈️ {t[2]}
+                    🎫 {t[3]}
+                    📅 {t[4]}
+                    🛫 {t[5]}
+                </div>    
+                """,
+                unsafe_allow_html=True
             )            
 # ==================================================
 # DISPONIBLE
