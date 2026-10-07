@@ -398,7 +398,7 @@ with col1:
 
         with st.container(border=True):
 
-            cab1, cab2, cab3 = st.columns([10,0.8,0.8])
+            cab1, cab2, cab3 = st.columns([8,1,1,0.5])
 
             with cab1:
                 st.markdown(
