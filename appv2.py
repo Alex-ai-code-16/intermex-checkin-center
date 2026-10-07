@@ -459,59 +459,69 @@ with col2:
 
     for t in disponibles:
 
-        st.warning(
-            f"""
-👤 {t[1]}
+        with st.container(border=True):
 
-✈️ {t[2]}
+            cab1, cab2, cab3, cab4 = st.columns([8,1,1,1])
 
-🎫 {t[3]}
+            with cab1:
+                st.markdown(
+                    f"<span style='font-size:16px; font-weight:600;'>👤 {t[1]}</span>",
+                    unsafe_allow_html=True
+                )
 
-📅 {t[4]}
+            with cab2:
+                if st.button(
+                    "🗑️",
+                    key=f"delete_disponible_{t[0]}"
+                ):
+                    cursor.execute(
+                        """
+                        DELETE FROM checkins
+                        WHERE id = ?
+                        """,
+                        (t[0],)
+                    )
+                    conn.commit()
+                    st.rerun()
 
-🛫 {t[5]}
-"""
-        )
+            with cab3:
+                if st.button(
+                    "✏️",
+                    key=f"editar_disponible_{t[0]}"
+                ):
+                    st.session_state["ticket_editar"] = t[0]
 
-        if st.button(
-            "🗑️ Eliminar",
-            key=f"delete_disponible_{t[0]}"
-        ):
+            with cab4:
+                if st.button(
+                    "✅",
+                    key=f"realizar_disp_{t[0]}"
+                ):
+                    cursor.execute(
+                        """
+                        UPDATE checkins
+                        SET estado='realizado'
+                        WHERE id=?
+                        """,
+                        (t[0],)
+                    )
+                    conn.commit()
+                    st.rerun()
 
-            cursor.execute(
-                """
-                DELETE FROM checkins
-                WHERE id = ?
+            st.markdown(
+                f"""
+                <div style="
+                    font-size:14px;
+                    line-height:1.8;
+                    margin-top:8px;
+                ">
+                    ✈️ {t[2]}<br>
+                    🎫 {t[3]}<br>
+                    📅 {t[4]}<br>
+                    🛫 {t[5]}
+                </div>
                 """,
-                (t[0],)
+                unsafe_allow_html=True
             )
-
-            conn.commit()
-            st.rerun()
-
-        if st.button(
-            "✅ Realizar Check-In",
-            key=f"realizar_disp_{t[0]}"
-        ):
-
-            cursor.execute(
-                """
-                UPDATE checkins
-                SET estado='realizado'
-                WHERE id=?
-                """,
-                (t[0],)
-            )
-
-            conn.commit()
-            st.rerun()
-
-        if st.button(
-            "✏️ Editar",
-            key=f"editar_disponible_{t[0]}"
-        ):
-            st.session_state["ticket_editar"] = t[0]
-
 # ==================================================
 # URGENTE
 # ==================================================
@@ -522,59 +532,69 @@ with col3:
 
     for t in urgentes:
 
-        st.error(
-            f"""
-👤 {t[1]}
+        with st.container(border=True):
 
-✈️ {t[2]}
+            cab1, cab2, cab3, cab4 = st.columns([8,1,1,1])
 
-🎫 {t[3]}
+            with cab1:
+                st.markdown(
+                    f"<span style='font-size:16px; font-weight:600;'>👤 {t[1]}</span>",
+                    unsafe_allow_html=True
+                )
 
-📅 {t[4]}
+            with cab2:
+                if st.button(
+                    "🗑️",
+                    key=f"delete_urgente_{t[0]}"
+                ):
+                    cursor.execute(
+                        """
+                        DELETE FROM checkins
+                        WHERE id = ?
+                        """,
+                        (t[0],)
+                    )
+                    conn.commit()
+                    st.rerun()
 
-🛫 {t[5]}
-"""
-        )
+            with cab3:
+                if st.button(
+                    "✏️",
+                    key=f"editar_urgente_{t[0]}"
+                ):
+                    st.session_state["ticket_editar"] = t[0]
 
-        if st.button(
-            "🗑️ Eliminar",
-            key=f"delete_urgente_{t[0]}"
-        ):
+            with cab4:
+                if st.button(
+                    "✅",
+                    key=f"realizar_urg_{t[0]}"
+                ):
+                    cursor.execute(
+                        """
+                        UPDATE checkins
+                        SET estado='realizado'
+                        WHERE id=?
+                        """,
+                        (t[0],)
+                    )
+                    conn.commit()
+                    st.rerun()
 
-            cursor.execute(
-                """
-                DELETE FROM checkins
-                WHERE id = ?
+            st.markdown(
+                f"""
+                <div style="
+                    font-size:14px;
+                    line-height:1.8;
+                    margin-top:8px;
+                ">
+                    ✈️ {t[2]}<br>
+                    🎫 {t[3]}<br>
+                    📅 {t[4]}<br>
+                    🛫 {t[5]}
+                </div>
                 """,
-                (t[0],)
+                unsafe_allow_html=True
             )
-
-            conn.commit()
-
-            st.rerun()
-
-        if st.button(
-            "✅ Realizar Check-In",
-            key=f"realizar_urg_{t[0]}"
-        ):
-
-            cursor.execute(
-                """
-                UPDATE checkins
-                SET estado='realizado'
-                WHERE id=?
-                """,
-                (t[0],)
-           )
-
-            conn.commit()
-            st.rerun()
-
-        if st.button(
-            "✏️ Editar",
-            key=f"editar_urgente_{t[0]}"
-        ):
-            st.session_state["ticket_editar"] = t[0]
 # ==================================================
 # REALIZADO
 # ==================================================
@@ -585,38 +605,51 @@ with col4:
 
     for t in realizados:
 
-        st.info(
-            f"""
-👤 {t[1]}
+        with st.container(border=True):
 
-✈️ {t[2]}
+            cab1, cab2, cab3 = st.columns([9,1.2,1.1])
 
-🎫 {t[3]}
-"""
-        )
+            with cab1:
+                st.markdown(
+                    f"<span style='font-size:16px; font-weight:600;'>👤 {t[1]}</span>",
+                    unsafe_allow_html=True
+                )
 
-        if st.button(
-            "🗑️ Eliminar",
-            key=f"delete_realizado_{t[0]}"
-        ):
+            with cab2:
+                if st.button(
+                    "🗑️",
+                    key=f"delete_realizado_{t[0]}"
+                ):
+                    cursor.execute(
+                        """
+                        DELETE FROM checkins
+                        WHERE id = ?
+                        """,
+                        (t[0],)
+                    )
+                    conn.commit()
+                    st.rerun()
 
-            cursor.execute(
-                """
-                DELETE FROM checkins
-                WHERE id = ?
+            with cab3:
+                if st.button(
+                    "✏️",
+                    key=f"editar_realizado_{t[0]}"
+                ):
+                    st.session_state["ticket_editar"] = t[0]
+
+            st.markdown(
+                f"""
+                <div style="
+                    font-size:14px;
+                    line-height:1.8;
+                    margin-top:8px;
+                ">
+                    ✈️ {t[2]}<br>
+                    🎫 {t[3]}
+                </div>
                 """,
-                (t[0],)
+                unsafe_allow_html=True
             )
-
-            conn.commit()
-
-            st.rerun()
-
-        if st.button(
-            "✏️ Editar",
-            key=f"editar_realizado_{t[0]}"
-        ):
-            st.session_state["ticket_editar"] = t[0]
 # ==================================================
 # COMPLETADO
 # ==================================================
@@ -627,35 +660,48 @@ with col5:
 
     for t in completados:
 
-        st.info(
-            f"""
-👤 {t[1]}
+        with st.container(border=True):
 
-✈️ {t[2]}
+            cab1, cab2, cab3 = st.columns([9,1.2,1.1])
 
-🎫 {t[3]}
-"""
-        )
+            with cab1:
+                st.markdown(
+                    f"<span style='font-size:16px; font-weight:600;'>👤 {t[1]}</span>",
+                    unsafe_allow_html=True
+                )
 
-        if st.button(
-            "🗑️ Eliminar",
-            key=f"delete_completado_{t[0]}"
-        ):
+            with cab2:
+                if st.button(
+                    "🗑️",
+                    key=f"delete_completado_{t[0]}"
+                ):
+                    cursor.execute(
+                        """
+                        DELETE FROM checkins
+                        WHERE id = ?
+                        """,
+                        (t[0],)
+                    )
+                    conn.commit()
+                    st.rerun()
 
-            cursor.execute(
-                """
-                DELETE FROM checkins
-                WHERE id = ?
+            with cab3:
+                if st.button(
+                    "✏️",
+                    key=f"editar_completado_{t[0]}"
+                ):
+                    st.session_state["ticket_editar"] = t[0]
+
+            st.markdown(
+                f"""
+                <div style="
+                    font-size:14px;
+                    line-height:1.8;
+                    margin-top:8px;
+                ">
+                    ✈️ {t[2]}<br>
+                    🎫 {t[3]}
+                </div>
                 """,
-                (t[0],)
+                unsafe_allow_html=True
             )
-
-            conn.commit()
-
-            st.rerun()
-
-        if st.button(
-            "✏️ Editar",
-            key=f"editar_completado_{t[0]}"
-        ):
-            st.session_state["ticket_editar"] = t[0]
