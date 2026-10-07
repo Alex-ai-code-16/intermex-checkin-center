@@ -384,75 +384,54 @@ with col1:
 
     for t in emitidos:
 
-        st.markdown(
-            f"""
-            <div style="
-                background:#EAF4EF;
-                padding:15px;
-                border-radius:12px;
-                border-left:5px solid #4CAF50;
-                box-shadow:0 2px 6px rgba(0,0,0,0.08);
-                margin-bottom:10px;
-            ">
+        with st.container(border=True):
 
-             <div style="
-                display:flex;
-                justify-content:space-between;
-                align-items:center;
-                margin-bottom:12px;
-            ">
+            cab1, cab2, cab3 = st.columns([6,1,1])
 
-            <span style="
-                font-size:18px;
-                font-weight:700;
-                color:#217346;
-            ">
-                   👤 {t[1]}
-                    </span>
+            with cab1:
+                st.markdown(
+                    f"### 👤 {t[1]}"
+                )
 
-            <span style="
-                font-size:18px;
-            ">
-                        🗑️ ✏️
-            </span>
+            with cab2:
 
-            </div>
+                if st.button(
+                    "🗑️",
+                    key=f"delete_emitido_{t[0]}"
+                ):
 
-            <div style="
-                line-height:1.9;
-                font-size:16px;
-            ">
-                ✈️ {t[2]}<br>
-                🎫 {t[3]}<br>
-                📅 {t[4]}<br>
-                🛫 {t[5]}
-            </div>
+                    cursor.execute(
+                        """
+                        DELETE FROM checkins
+                        WHERE id = ?
+                        """,
+                        (t[0],)
+                    )
 
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+                    conn.commit()
 
-        if st.button(
-            "🗑️ Eliminar",
-            key=f"delete_emitido_{t[0]}"
-        ):
-            cursor.execute(
-                """
-                DELETE FROM checkins
-                WHERE id = ?
-                """,
-                (t[0],)
-            )
+                    st.rerun()
 
-            conn.commit()
-            st.rerun()
+            with cab3:
 
-        if st.button(
-            "✏️ Editar",
-            key=f"editar_disp_{t[0]}"
-        ):
-            st.session_state["ticket_editar"] = t[0]            
+                if st.button(
+                    "✏️",
+                    key=f"editar_emitido_{t[0]}"
+                ):
+
+                    st.session_state["ticket_editar"] = t[0]
+
+            st.markdown(
+                f"""
+✈️ {t[2]}
+
+🎫 {t[3]}
+
+📅 {t[4]}
+
+🛫 {t[5]}
+"""
+            )            
 # ==================================================
 # DISPONIBLE
 # ==================================================
