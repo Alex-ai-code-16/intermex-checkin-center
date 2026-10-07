@@ -436,10 +436,14 @@ with col1:
 
             st.markdown(
                 f"""
-                <div style='font-size:14px; line-height:1.5'>
-                    ✈️ {t[2]}
-                    🎫 {t[3]}
-                    📅 {t[4]}
+                <div style="
+                    font-size:14px;
+                    line-height:1.8;
+                    margin-top:8px;
+                ">
+                    ✈️ {t[2]}<br>
+                    🎫 {t[3]}<br>
+                    📅 {t[4]}<br>
                     🛫 {t[5]}
                 </div>    
                 """,
