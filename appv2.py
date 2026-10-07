@@ -30,6 +30,17 @@ header {
     padding-top: 1rem;
 }
 
+div[data-testid="stButton"] > button {
+    border: none;
+    background: transparent;
+    padding: 0px;
+    min-height: auto;
+}
+
+div[data-testid="stButton"] > button:hover {
+    background: rgba(0,0,0,0.05);
+}
+
 .stApp {
 background: linear-gradient(
 135deg,
