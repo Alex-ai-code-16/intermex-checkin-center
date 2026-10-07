@@ -386,11 +386,11 @@ with col1:
 
         with st.container(border=True):
 
-            cab1, cab2, cab3 = st.columns([6,1,1])
+            cab1, cab2, cab3 = st.columns([10,0.8,0.8])
 
             with cab1:
                 st.markdown(
-                    f"### 👤 {t[1]}"
+                    f"**👤 {t[1]}**"
                 )
 
             with cab2:
